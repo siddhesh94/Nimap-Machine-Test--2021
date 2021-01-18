@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <h2 class="text-center p-2">User Profile</h2>
+</div>
+<div class="container profile mt-5">
+    <div class="row">
+        <div class="col-xl-4">
+            <h3 class="text-primary">Profile</h3>
+           <!-- <div><img src = "/assets/image/default.png"></div> -->
+           <div *ngFor = "let item of userProfile"><img src=" {{item.imageName}}"></div>
+            
+            <div class="row mt-3">
+                <div class="col-xl-12">
+                    <button class="btn btn-warning">Edit Photo</button>
+                </div>
+                
+            </div>
+        </div>
+        <div *ngFor = "let item of userProfile" class="col-xl-8">
+            <p  class="mt-4">I'm {{item.firstname}} {{item.lastname}} and I'm  above {{item.age}} years and you can send  your emails to {{item.email}}. I live  in the state of {{item.state}}. I like to play {{item.interest}}.  And please send  me newsletters. Please  reach out to me on my{{item.phoneno}}. </p>
+           <a routerLink = "/"> <button class="btn btn-success">I Agree</button></a>
+           <span class="ml-5"><a routerLink = "/registerform/{{item.id}}">  <button  class="btn btn-warning">Edit Profile</button></a></span>
+        </div>
+    </div> 
+</div>

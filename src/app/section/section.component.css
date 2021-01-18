@@ -1,0 +1,62 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+.section p{
+	margin-top: 80px;
+	width: 80%;
+	margin-left: 90px;
+	font-family: verdana;
+	color:gray;
+	font-size: small;
+}
+.section h1{
+	border-bottom: 3px solid #00BFFF;
+	font-family: verdana;
+
+}
+.section button{
+	font-size: small;
+	font-weight: bold;
+	padding: 15px;
+}
+.section h3{
+	font-family: sans-serif;
+	font-style: italic;
+}
+
+.subscribe .container p{
+	padding-top: 100px;
+	font-family: verdana;
+}
+.subscribe{
+	 background: #403D3D;
+	 height: 300px;
+}
+.subscribe input{
+	border: 2px solid #00BFFF;
+	border-radius: 8px;
+	background: #403D3D;
+	color: white;
+	width: 30%;
+	
+}
+.subscribe input::placeholder{
+	color: #fff;
+	font-style: italic;
+}
+
+.footer i{
+	font-size: 25px;
+	color: #00BFFF;
+}
+.footer input{
+	border: none;
+}
+.register_form{
+	background: #00BFFF;
+}
+
+.register_form i{
+	font-size: 25px;
+	color: #fff;
+}

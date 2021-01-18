@@ -1,0 +1,222 @@
+<div class="header">
+	<nav class="navbar navbar-expand-lg ">
+  		<a class="navbar-brand ml-5 mt-5" href="#">DEMO APP</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarNav">
+    		<ul class="navbar-nav ml-auto mt-5 mr-5">
+      			<li class="nav-item ">
+        			<a class="nav-link" routerLink="/">HOME</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="#">ABOUT US</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="#">Jobs</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link " href="#">CLIENTS</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link " href="#">CONTACT US</a>
+      			</li>
+    		</ul>
+  		</div>
+	</nav>
+
+	<div class="title">
+		<h1>I'm looking for you...</h1>
+	</div>
+
+	<div class="input">
+		<div class="container banner_input">
+			<div class="row">
+				<div class="col-md-8 col-sm-12">
+					<input class="description  p-2" type="text" name="description" placeholder="Enter a job description">
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<button class="btn btn-primary search_btn pt-2 pb-2"><i class="fa fa-search"></i><span class="search pl-2">Search</span></button>
+				</div>
+			</div>
+		</div>
+		<div class="container checkbox">
+			<div class="row">
+				<div class="col-md-8 col-sm-12">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="row">
+								<div class="col-md-4 col-sm-12">
+									<span><input id="fulltime" type="checkbox" name="fulltime"></span>&nbsp;<span class="fulltime text-white pl-1">Full Time</span>
+								</div>
+								<div class="col-md-8 col-sm-12">
+									<input type="checkbox" name="parttime">&nbsp;<span class="parttime text-white pl-1">Part Time/Casual/Freelance</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<input class="location" type="text" name="location" placeholder="select your location">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12">
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="register">
+	<button class="btn btn-primary btn_register text-center " (click)="showModal()"  >Register</button>
+	</div>	
+</div>
+
+
+<div class="modal fade overflow-auto" id="mymodal" [ngClass]="{'show':showModal}" *ngIf = "isDisplay" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="text-primary">Register</h3>
+				<button type="button" class="close" data-dismiss="modal" (click)="closeModal()">&times;</button>
+			</div>
+			<div class="modal-body">
+				
+				<form   [formGroup] = 'registerForm' (ngSubmit) = "addData(registerForm)">
+					<div class="form-group">
+						<div class="upload">
+							<img [src]="imageURL" class="img img-fluid ">
+							<input type="file" #image accept="image/*" class="file" (change) = "handleFileInput($event.target.files)" formControlName = "imageName">
+						</div>
+					</div> 
+					<div class="form-group">
+						<label>First Name</label>
+						<input type="text" class="form-control"  formControlName="firstname">
+						<div *ngIf="registerForm.controls['firstname'].touched && !registerForm.controls['firstname'].valid">  
+							<span *ngIf="registerForm.controls['firstname'].hasError('required') ">  
+								<small class="text-danger">First Name is required</small> 
+							</span> 
+							<span *ngIf="registerForm.controls['firstname'].hasError('pattern') ">  
+								<small class="text-danger">Max char length is 20</small> 
+							</span> 
+
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" class="form-control"  formControlName="lastname" >
+						<div *ngIf="registerForm.controls['lastname'].touched && !registerForm.controls['lastname'].valid">  
+							<span *ngIf="registerForm.controls['lastname'].hasError('required') ">  
+								<small class="text-danger">Last Name is required</small> 
+							</span>  
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<input type="email" class="form-control"  formControlName="email" >
+						<div *ngIf="registerForm.controls['email'].touched && !registerForm.controls['email'].valid">  
+							<span *ngIf="registerForm.controls['email'].hasError('required') ">  
+								<small class="text-danger">Email is required</small> 
+							</span> 
+							<span *ngIf="registerForm.controls['email'].hasError('email') ">  
+								<small class="text-danger">Enter valid email id</small> 
+							</span> 
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Phone no</label>
+						<input type="tel" class="form-control"  formControlName="phoneno" >
+						<div *ngIf="registerForm.controls['phoneno'].touched && !registerForm.controls['phoneno'].valid">  
+							<span *ngIf="registerForm.controls['phoneno'].hasError('required') ">  
+								<small class="text-danger">Phone no is required</small> 
+							</span> 
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="">Age</label>	
+						 
+						 <mat-slider
+						 formControlName="age"
+							thumbLabel
+							[displayWith]="formatLabel"
+							tickInterval="1"
+							min="20"
+							max="70">
+						</mat-slider>
+
+						<div *ngIf="registerForm.controls['age'].touched && !registerForm.controls['age'].valid">
+							<span *ngIf="registerForm.controls['age'].hasError('required') ">  
+								Age is required  
+							</span>  
+						</div> 
+					</div>
+					<div class="form-group">
+						<label>State</label>
+						<select class="custom-select" formControlName="state" >
+							<option selected>State</option>
+							<option *ngFor = 'let states of state'>{{states}}</option>
+						</select>
+						
+					</div>
+					<div class="form-group">
+						<label>Country</label>
+						<select class="custom-select" formControlName="country" >
+							<option selected>Country</option>
+							<option *ngFor = 'let countries of country'>{{countries}}</option>
+						</select>
+						
+					</div>
+					<div formGroupName = "addresses">
+						<div class="form-group">
+							<label>Address</label>
+							<select (change) = "selectAddress()" class="custom-select" formControlName="address" >
+								<option selected>Address</option>
+								<option *ngFor = 'let address of addressType'>{{address}}</option>
+							</select>
+							
+						</div>
+						<div *ngIf = 'addressOnSelect' class="form-group">
+							<label>Address 1</label>
+							<input type="text" class="form-control" formControlName="address1" >
+							
+							<label>Address 2</label>
+							<input type="text" class="form-control"  formControlName="address2" >
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Interest</label> &nbsp;
+						
+						   <mat-form-field class="example-chip-list">
+							<mat-chip-list #chipList aria-label="Interests selection">
+							  <mat-chip *ngFor="let interest of interests"   [selectable]="selectable"
+									   [removable]="removable" (removed)="remove(interest)">
+								{{interest.name}}
+								<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+							  </mat-chip>
+							  <input formControlName = "interest"
+							   placeholder="Tags"
+									 [matChipInputFor]="chipList"
+									 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+									 [matChipInputAddOnBlur]="addOnBlur"
+									 (matChipInputTokenEnd)="add($event)">
+							</mat-chip-list>
+						  </mat-form-field>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input"type="checkbox"  formControlName="subscribe" >
+						<label class="form-check-label ml-2">Subscribe to newsletter</label>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mt-4">
+							<button class="btn btn-default border-dark w-50" (click)="closeModal()">Cancel</button>
+						</div>
+						<div class="col-md-6 mt-4">
+						<button class="btn btn-primary w-50" [disabled]="!registerForm.valid" type="submit" >Submit</button>
+						</div>
+					</div>
+					
+				</form> 
+			</div>
+		</div>
+	</div>
+</div>  

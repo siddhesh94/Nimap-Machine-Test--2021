@@ -1,0 +1,173 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+.modal.show{
+    display: block;
+}
+.header{
+	background-image: url("/assets/image/banner.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 1;
+	position: relative;
+	height: 600px;
+
+}
+.nav-link{
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+.navbar-brand{
+	color: #fff;
+	font-weight: bold;
+}
+.title{
+	color: #fff;
+	font-weight: bold;
+	position: absolute;
+	top: 40%;
+	left: 14%;
+}
+.search_btn{
+	width: 50%;
+}
+.banner_input{
+	position: absolute;
+	top: 60%;
+	left: 14%;
+
+}
+.description{
+	width: 90%;
+}
+.location{
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width: 80%;	
+}
+.checkbox{
+	position: absolute;
+	top: 80%;
+	left: 14%;
+}
+.register{
+	position: absolute;
+	left: 50%;
+	top: 90%;
+}
+.btn_register{
+	padding: 7px 25px;
+	font-weight: bold;
+}
+
+.slide{
+	width: 90%;
+}
+.img {
+	padding-left: 70px;
+
+}
+.register_form_page{
+	overflow-x: hidden;
+}
+
+.p_upload {
+	padding-left: 120px !important;
+}
+.profile img{
+	padding-left: 25px;
+	border: 1px solid;
+	margin-left: 90px; 
+}
+.edit{
+	margin-left: 70px;
+}
+.profile h3{
+	color: #00BFFF;
+}
+ .slider::after{
+	content: '60';
+	color: black;
+	font-size: 1rem;
+	position: absolute;
+	left: 56%;
+	top: 32%;
+}
+.slider::before{
+	content: '20';
+	color: black;
+	font-size: 1rem;
+	position: absolute;
+	left: 13%;
+	top: 32%;
+} 
+ mat-slider {
+	width: 300px;
+	color: black;
+  }
+  .example-chip-list {
+	width: 100%;
+  }
+ .img{
+	width: 200px;
+	height: 150px;
+	margin: auto;
+	margin-left: 90px;
+	margin-bottom: 30px;
+}
+.file{
+	
+	margin-bottom: 20px;
+	margin-left: 120px;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px){
+
+	.title h1{
+		font-size: 30px;
+		text-align: center;
+		padding-left: 40px;
+	}
+	.input input{
+		width: 50%;
+		margin-left: 40px;
+	}
+	.search_btn{
+		margin-top: 10px;
+		margin-left: 40px;
+	}
+	.checkbox #fulltime input{
+		border: 2px solid red;
+
+}
+
+
+}

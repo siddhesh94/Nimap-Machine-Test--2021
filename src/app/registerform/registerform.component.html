@@ -1,0 +1,109 @@
+			<div class="container mt-5 mb-5">
+				<form class="w-50 m-auto"   [formGroup] = 'registerForm' (ngSubmit) = "updateUserProfile()">
+					<div class="form-group">
+						<div class="upload">
+							<img [src]="imageURL" class="img img-fluid  ">
+							<input type="file" #image accept="image/*" class="file" (change) = "handleFileInput($event.target.files)" formControlName = "imageName">
+						</div>
+					</div> 
+					<div class="form-group">
+						<label>First Name</label>
+						<input type="text" class="form-control"  formControlName="firstname">
+						
+						
+					</div>
+					<div class="form-group">
+						<label>Last Name</label>
+						<input type="text" class="form-control"  formControlName="lastname" >
+						
+					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<input type="email" class="form-control"  formControlName="email" >
+						
+					</div>
+					<div class="form-group">
+						<label>Phone no</label>
+						<input type="tel" class="form-control"  formControlName="phoneno" >
+						
+					</div>
+					<div class="form-group">
+						<label class="">Age</label>	
+						 
+						 <mat-slider
+						 formControlName="age"
+							thumbLabel
+							[displayWith]="formatLabel"
+							tickInterval="1"
+							min="20"
+							max="70">
+						</mat-slider>
+
+						 
+					</div>
+					<div class="form-group">
+						<label>State</label>
+						<select class="custom-select" formControlName="state" >
+							<option selected>State</option>
+							<option *ngFor = 'let states of state'>{{states}}</option>
+						</select>
+						
+					</div>
+					<div class="form-group">
+						<label>Country</label>
+						<select class="custom-select" formControlName="country" >
+							<option selected>Country</option>
+							<option *ngFor = 'let countries of country'>{{countries}}</option>
+						</select>
+						
+					</div>
+					<div formGroupName = "addresses">
+						<div class="form-group">
+							<label>Address</label>
+							<select (change) = "selectAddress()" class="custom-select" formControlName="address" >
+								<option selected>Address</option>
+								<option *ngFor = 'let address of addressType'>{{address}}</option>
+							</select>
+							
+						</div>
+						<div *ngIf = 'addressOnSelect' class="form-group">
+							<label>Address 1</label>
+							<input type="text" class="form-control" formControlName="address1" >
+							
+							<label>Address 2</label>
+							<input type="text" class="form-control"  formControlName="address2" >
+							
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Interest</label> &nbsp;
+						
+						   <mat-form-field class="example-chip-list">
+							<mat-chip-list #chipList aria-label="Interests selection">
+							  <mat-chip *ngFor="let interest of interests"   [selectable]="selectable"
+									   [removable]="removable" (removed)="remove(interest)">
+								{{interest.name}}
+								<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+							  </mat-chip>
+							  <input formControlName = "interest"
+							   placeholder="Tags"
+									 [matChipInputFor]="chipList"
+									 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+									 [matChipInputAddOnBlur]="addOnBlur"
+									 (matChipInputTokenEnd)="add($event)">
+							</mat-chip-list>
+						  </mat-form-field>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input"type="checkbox"  formControlName="subscribe" >
+						<label class="form-check-label ml-2">Subscribe to newsletter</label>
+					</div>
+					<div class="row">
+						<div class="col-md-12 mt-4">
+					<button class="btn btn-primary w-50 mb-5" type="submit" >Update</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+			
